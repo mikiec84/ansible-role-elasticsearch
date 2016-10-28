@@ -7,7 +7,7 @@
   when: elasticsearch_timezone is defined
 
 - name: Add specified repos and update apt index
-  command: yes | sudo add-apt-repository {{ elasticsearch_apt_repos }}
+  command: yes | sudo add-apt-repository {{ item }}
   with_items: '{{ elasticsearch_apt_repos }}'
 
 - name: apt-get update
