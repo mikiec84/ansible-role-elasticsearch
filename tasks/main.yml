@@ -7,11 +7,11 @@
   when: elasticsearch_timezone is defined
 
 - name: Add specified repos and update apt index
-  apt_repository:
-    repo: '{{ item }}'
-    state: present
-    update_cache: yes
+  command: yes | sudo add-apt-repository {{ elasticsearch_apt_repos }}
   with_items: '{{ elasticsearch_apt_repos }}'
+
+- name: apt-get update
+  command: apt-get update
 
 - name: Accept Oracle license prior JDK installation
   shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections; echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections creates=/usr/lib/jvm/java-7-oracle
