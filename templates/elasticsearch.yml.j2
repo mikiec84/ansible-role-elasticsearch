@@ -626,3 +626,8 @@ script.groovy.sandbox.enabled: true
 script.{{action}}: on
 {% endfor %}
 {% endif%}
+
+# settings required by npms indexer:
+action.auto_create_index: -npms-current,-npms-new,+*
+script.engine.groovy.inline.search: on
+script.engine.groovy.inline.update: on
