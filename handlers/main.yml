@@ -3,4 +3,5 @@
 
 # Restart Elasticsearch
 - name: Restart Elasticsearch
+  become: true
   service: name=elasticsearch state=restarted
